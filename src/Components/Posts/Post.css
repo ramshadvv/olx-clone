@@ -24,6 +24,9 @@
 .cards{
   display: flex;
 }
+.cards::-webkit-scrollbar {
+  display: none;
+}
 .recommendations .cards {
   display: flex;
 }

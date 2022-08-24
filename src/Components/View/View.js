@@ -11,8 +11,7 @@ function View() {
   const [userDetails,setUserDetails]=useState({});
 useEffect(()=>{
   async function getUser() {
-    // const result=await db.collection('users').doc('fK3ddutEpD2qQqRMXNW5').get();
-    // console.log(result);
+    console.log('inside user useEffect')
     const colRef = collection(db, 'users');
     const snapshots = await getDocs(colRef);
     const docs = snapshots.docs.map((doc) => doc.data());
@@ -20,7 +19,7 @@ useEffect(()=>{
     setUserDetails(...result);
   }
   getUser();
-},[])
+},[postDetails.userId])
   return (
     <div className="viewParentDiv">
       <div className="imageShowDiv">

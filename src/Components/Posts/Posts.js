@@ -18,6 +18,7 @@ function Posts() {
       const snapshots = await getDocs(colRef);
       const docs = snapshots.docs.map((doc) => doc.data());
       const result = docs.map((doc) => { return { ...doc } });
+      console.log(result);
       setPosts(result);
     }
     getProducts();
@@ -72,7 +73,7 @@ const navigate=useNavigate();
               <Heart></Heart>
             </div>
             <div className="image">
-              <img src="../../../Images/R15V3.jpg" alt="" />
+              <img src="../../../public/Images/R15V3.jpg" alt="" />
             </div>
             <div className="content">
               <p className="rate">&#x20B9; 250000</p>
