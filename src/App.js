@@ -16,11 +16,11 @@ function App() {
       <PostProvider>
 
       <Routes>
-          <Route path='https://ravi-sankarp.github.io/olx-clone/' element={<Home />}></Route>
-          <Route path='https://ravi-sankarp.github.io/olx-clone/login' element={<Login />}></Route>
-          <Route path='https://ravi-sankarp.github.io/olx-clone/signup' element={<Signup />}></Route>
-          <Route path='https://ravi-sankarp.github.io/olx-clone/create' element={<Create />}></Route>
-          <Route path='https://ravi-sankarp.github.io/olx-clone/viewpost' element={<ViewPost />}></Route>
+          <Route path='/olx-clone' element={<Home />}></Route>
+          <Route path='/olx-clone/login' element={<Login />}></Route>
+          <Route path='/olx-clone/signup' element={<Signup />}></Route>
+          <Route path='/olx-clone/create' element={<Create />}></Route>
+          <Route path='/olx-clone/viewpost' element={<ViewPost />}></Route>
 
       </Routes>
       </PostProvider>
