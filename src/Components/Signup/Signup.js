@@ -1,12 +1,13 @@
-import React, { useState,useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { createUserWithEmailAndPassword, updateProfile, getAuth } from 'firebase/auth'
-import {app,db} from '../../config/firebase'
+import {setPersistence, browserSessionPersistence, createUserWithEmailAndPassword, updateProfile, getAuth
+} from 'firebase/auth'
+import { app, db } from '../../config/firebase'
 import Logo from '../../olx-logo.png';
 import './Signup.css';
-import { addDoc, collection} from 'firebase/firestore';
+import { addDoc, collection } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
-import {AuthContext} from '../../Contexts/AuthContext';
+import { AuthContext } from '../../Contexts/AuthContext';
 
 
 export default function Signup() {
@@ -17,29 +18,30 @@ export default function Signup() {
   const [password, setPassword] = useState('');
   const [passwordErr, setPasswordErr] = useState('');
   const [err, setErr] = useState('');
-  const [load,setLoad]=useState('');
-  const {setCurrentUser}=useContext(AuthContext);
-  
-  const navigate=useNavigate();
+  const [load, setLoad] = useState('');
+  const { setCurrentUser } = useContext(AuthContext);
+
+  const navigate = useNavigate();
   const auth = getAuth(app);
 
-  function registerUser(e){
+  function registerUser(e) {
     e.preventDefault();
-    async function registerWithEmailAndPassword(){
+    async function registerWithEmailAndPassword() {
       try {
         setLoad('Loading...');
-        const {user} = await createUserWithEmailAndPassword(auth,email, password);
+        await setPersistence(auth, browserSessionPersistence);
+        const { user } = await createUserWithEmailAndPassword(auth, email, password);
         // sessionStorage.setItem('Auth Token', user._tokenResponse.refreshToken);
-       await updateProfile(user,{displayName:name});
-     await addDoc(collection(db,'users'),{
-        uid:user.uid,
-        name,
-        email,
-        phone
-       });
-       setCurrentUser({name,uid:user.uid});
+        await updateProfile(user, { displayName: name });
+        await addDoc(collection(db, 'users'), {
+          uid: user.uid,
+          name,
+          email,
+          phone
+        });
+        setCurrentUser({ name, uid: user.uid });
         navigate('/');
-       
+
       } catch (err) {
         setLoad('');
         console.error(err.message);
@@ -53,7 +55,7 @@ export default function Signup() {
           case "auth/email-already-in-use":
             setErr('Email already exists');
             break;
-          default:setErr(err.message)
+          default: setErr(err.message)
         }
       }
     };
@@ -74,7 +76,7 @@ export default function Signup() {
             type="text"
             id="fname"
             name="name"
-            onChange={(e)=>{
+            onChange={(e) => {
               setName(e.target.value)
             }}
             defaultValue=""
@@ -124,10 +126,10 @@ export default function Signup() {
           />
           <br />
           <br />
-          
-          
-          <button disabled={name === "" || email === "" || phone === "" || password === ""?true: false} onClick={(e)=>registerUser(e)}>Signup</button>
-          
+
+
+          <button disabled={name === "" || email === "" || phone === "" || password === "" ? true : false} onClick={(e) => registerUser(e)}>Signup</button>
+
         </form>
         <Link to='/login'>Login</Link>
         <Link to='/'>Back to Home</Link>

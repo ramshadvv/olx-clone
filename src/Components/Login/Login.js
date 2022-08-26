@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthContext';
-import { signInWithEmailAndPassword } from "firebase/auth"
+import { setPersistence, signInWithEmailAndPassword, browserSessionPersistence } from "firebase/auth"
 import { auth } from '../../config/firebase'
 
 import Logo from '../../olx-logo.png';
@@ -18,9 +18,11 @@ function Login() {
     setErr('');
     try {
       e.preventDefault();
+      await setPersistence(auth, browserSessionPersistence);
       const result = await signInWithEmailAndPassword(auth, userEmail, userPwd);
       console.log(result._tokenResponse.localId);
       setCurrentUser({ name: result._tokenResponse.displayName, uid: result._tokenResponse.localId});
+
       navigate('/');
     }
     catch (error) {
