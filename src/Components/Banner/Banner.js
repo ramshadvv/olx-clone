@@ -23,7 +23,7 @@ function Banner() {
         </div>
         <div className="banner">
           <img
-            src="../../../Images/banner copy.png"
+            src="https://firebasestorage.googleapis.com/v0/b/olx-clone-8f349.appspot.com/o/images%2Fbannercopy.png?alt=media&token=50a11960-bc9c-4650-9036-2908411f9fdf"
             alt=""
           />
         </div>

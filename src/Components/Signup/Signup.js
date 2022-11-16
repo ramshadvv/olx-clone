@@ -1,7 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import {setPersistence, browserSessionPersistence, createUserWithEmailAndPassword, updateProfile, getAuth
-} from 'firebase/auth'
+import {setPersistence, browserSessionPersistence, createUserWithEmailAndPassword, updateProfile, getAuth} from 'firebase/auth'
 import { app, db } from '../../config/firebase'
 import Logo from '../../olx-logo.png';
 import './Signup.css';

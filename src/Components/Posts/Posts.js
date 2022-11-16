@@ -73,7 +73,7 @@ const navigate=useNavigate();
               <Heart></Heart>
             </div>
             <div className="image">
-              <img src="../../../public/Images/R15V3.jpg" alt="" />
+              <img src="https://firebasestorage.googleapis.com/v0/b/olx-clone-8f349.appspot.com/o/images%2FR15V3.jpg?alt=media&token=427100ba-c104-4946-a1c8-9f6ccbc97504" alt="" />
             </div>
             <div className="content">
               <p className="rate">&#x20B9; 250000</p>

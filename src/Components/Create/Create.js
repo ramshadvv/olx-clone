@@ -33,7 +33,7 @@ console.log(currentUser.uid);
           url,
           createdAt:`${date.getDate()}-${date.getMonth()}-${date.getFullYear()}`
         }));
-    }).catch(err => console.log(err)).finally(()=>navigate('/'))
+    }).finally(()=>navigate('/'))
     })();
   }
   return (

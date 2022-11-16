@@ -14,4 +14,3 @@ export function PostProvider({children}) {
     </PostContext.Provider>
   )
 };
-
